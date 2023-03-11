@@ -1,2 +1,5 @@
 'use strict';
-let x = 5;
+
+const checkButton = document.getElementsByClassName('check');
+const guessField = document.getElementsByClassName('guess');
+
