@@ -6,7 +6,7 @@ let message = document.querySelector('.message');
 let score = document.querySelector('.score');
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector(".number").textContent = secretNumber;
+
 
 checkButton.addEventListener('click', function () {
     const guessedNumber = Number(guessField.value);
@@ -35,6 +35,8 @@ checkButton.addEventListener('click', function () {
         }
     }
     else if (guessedNumber === secretNumber) {
+        document.querySelector(".number").textContent = secretNumber;
+        document.querySelector('body').style.backgroundColor = 'green'
         message.textContent = "You win! 🥳";
     }
 });
