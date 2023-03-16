@@ -6,10 +6,11 @@ const againButton = document.querySelector('.again');
 let message = document.querySelector('.message');
 let scoreShown = document.querySelector('.score');
 let body = document.querySelector('body');
-let highScore = document.querySelector('highscore');
+let highScoreShown = document.querySelector('highscore');
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+//let highScore = 0;
 
 checkButton.addEventListener('click', function () {
     const guessedNumber = Number(guessField.value);
@@ -47,20 +48,12 @@ checkButton.addEventListener('click', function () {
     
 });
 
-// againButton.addEventListener('click', function () {
-//     body.style.backgroundColor = 'black';
-//     guessField.value = '';
-//     message.textContent = 'Start guessing...';
-//     document.querySelector(".number").textContent = '?';
-//     secretNumber = Math.trunc(Math.random() * 20) + 1;
-
-//     if (Number(highScore.textContent) < Number(score.textContent)) {
-//         highScore.textContent = score.textContent
-//         score.textContent = 20;
-//     }
-//     else {
-//         score.textContent = 20;
-//     }
-
-   
-// });
+againButton.addEventListener('click', function () {
+    body.style.backgroundColor = 'black';
+    guessField.value = '';
+    message.textContent = 'Start guessing...';
+    document.querySelector(".number").textContent = '?';
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+    score = 20;
+    scoreShown.textContent = score;   
+});
