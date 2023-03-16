@@ -3,7 +3,7 @@
 const checkButton = document.querySelector('.check');
 const guessField = document.querySelector('.guess');
 let message = document.querySelector('.message');
-let score = document.querySelector('.score').textContent;
+let score = document.querySelector('.score');
 
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector(".number").textContent = secretNumber;
@@ -14,18 +14,28 @@ checkButton.addEventListener('click', function () {
         message.textContent = 'No number! 🛑'
     }
     else if (guessedNumber > secretNumber) {
-        message.textContent = 'Too high! 📈'
-        score = Number(score) - 1;
-        document.querySelector('.score').textContent = score;
-        console.log(typeof score, score);
+        if (score.textContent > 1) {
+          message.textContent = "Too high! 📈";
+          score.textContent = Number(score.textContent) - 1;
+          document.querySelector(".score").textContent = score.textContent;
+        } else {
+            message.textContent = "You lost! 👎";
+            score.textContent = 0;
+        }
     }
     else if (guessedNumber < secretNumber) {
-        message.textContent = "Too low! 📉";
-        score = Number(score) - 1;
-        document.querySelector(".score").textContent = score;
+        if (score.textContent > 1) {
+            message.textContent = "Too low! 📉";
+            score.textContent = Number(score.textContent) - 1;
+            document.querySelector(".score").textContent = score.textContent;
+        }
+        else {
+            message.textContent = "You lost! 👎";
+            score.textContent = 0;
+        }
     }
-    if (guessedNumber === secretNumber) {
-      message.textContent = "You win! 🥳";
+    else if (guessedNumber === secretNumber) {
+        message.textContent = "You win! 🥳";
     }
 });
 
