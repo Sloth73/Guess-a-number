@@ -6,10 +6,11 @@ const againButton = document.querySelector('.again');
 let message = document.querySelector('.message');
 let scoreShown = document.querySelector('.score');
 let body = document.querySelector('body');
-let highScoreShown = document.querySelector('highscore');
+let highScoreShown = document.querySelector('.highscore');
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let highScore = 0;
 //let highScore = 0;
 
 checkButton.addEventListener('click', function () {
@@ -22,6 +23,10 @@ checkButton.addEventListener('click', function () {
         document.querySelector(".number").textContent = secretNumber;
         body.style.backgroundColor = "green";
         message.textContent = "You win! 🥳";
+        if (score > highScore) {
+            highScore = score;
+            highScoreShown.textContent = highScore;
+        }
     }
         
     else if (guessedNumber > secretNumber) {
